@@ -28,9 +28,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/noauth/**").permitAll()
                 .antMatchers("/users/create").permitAll()
+
+                // 为 Swagger2 增加规则 TODO 这种方式不是最优秀的，是否可以通过其他方式解决？
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/v2/api-docs").permitAll()
+
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().csrf().disable();

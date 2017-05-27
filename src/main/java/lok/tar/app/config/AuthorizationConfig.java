@@ -36,7 +36,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                 .inMemory()
 
                 .withClient("mobile")
-                .authorizedGrantTypes("refresh_token", "password")
+                .authorizedGrantTypes("password", "refresh_token")
                 //.secret("secret")
                 .scopes("ui")
         ;
