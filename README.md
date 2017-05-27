@@ -9,17 +9,25 @@
 
 ```
 
+## 无授权访问
 
-### Header
+```
+http://hunter:8080/api/noauth/hello
+```
+
+## 需要授权访问
+
+### 获取授权令牌（token）
+
+#### Header
 ```
 Authorization:Basic bW9iaWxlOg==
 ```
 
-### form-data
+#### form-data
 ```
 username:Frank
 password:frank
-scope:ui
 grant_type:password
 ```
 

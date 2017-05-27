@@ -16,8 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -27,6 +25,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
  * Created by Frank on 2017/5/27.
  */
 @SpringBootApplication
+//@EnableResourceServer
 public class Application {
 
     public static void main(String[] args) {
@@ -41,6 +40,16 @@ public class Application {
         private MySQLUserDetailsService userDetailsService;
 
         @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                    .authorizeRequests()
+                    .antMatchers("/noauth/**").permitAll()
+                    .anyRequest().authenticated()
+                    .and().httpBasic()
+                    .and().csrf().disable();
+        }
+
+        @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth.userDetailsService(userDetailsService)
                     .passwordEncoder(new BCryptPasswordEncoder());
@@ -52,6 +61,7 @@ public class Application {
         public AuthenticationManager authenticationManagerBean() throws Exception {
             return super.authenticationManagerBean();
         }
+
     }
 
     @Configuration
@@ -63,9 +73,9 @@ public class Application {
         @Autowired
         @Qualifier("authenticationManagerBean")
         private AuthenticationManager authenticationManager;
-//
-//        @Autowired
-//        private MySQLUserDetailsService userDetailsService;
+
+        @Autowired
+        private MySQLUserDetailsService userDetailsService;
 
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -81,13 +91,12 @@ public class Application {
             // @formatter:on
         }
 
-
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
             endpoints
                     .tokenStore(tokenStore)
                     .authenticationManager(authenticationManager)
-//                    .userDetailsService(userDetailsService)
+                    .userDetailsService(userDetailsService)
             ;
         }
 
@@ -99,20 +108,20 @@ public class Application {
         }
     }
 
-    @Configuration
-    @EnableResourceServer
-    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            // @formatter:off
-            http
-                    .authorizeRequests()
-                    .antMatchers("/noauth/**").permitAll()
-                    .anyRequest().authenticated()
-            ;
-            // @formatter:on
-        }
-
-    }
+//    @Configuration
+//    @EnableResourceServer
+//    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+//
+//        @Override
+//        public void configure(HttpSecurity http) throws Exception {
+//            // @formatter:off
+//            http
+//                    .authorizeRequests()
+//                    .antMatchers("/noauth/**").permitAll()
+//                    .anyRequest().authenticated()
+//            ;
+//            // @formatter:on
+//        }
+//
+//    }
 }
