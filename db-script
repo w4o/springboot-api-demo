@@ -1,0 +1,38 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : host-mysql
+ Source Server Type    : MySQL
+ Source Server Version : 50718
+ Source Host           : mysql
+ Source Database       : hunter
+
+ Target Server Type    : MySQL
+ Target Server Version : 50718
+ File Encoding         : utf-8
+
+ Date: 05/27/2017 22:21:16 PM
+*/
+
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+--  Records of `user`
+-- ----------------------------
+BEGIN;
+INSERT INTO `user` VALUES ('1', 'Frank', '$2a$10$Sn2ko4CbSGDtQjCydWTmluzpGIHvKDh6zcv5JIwwGscXPGZwLntau');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
