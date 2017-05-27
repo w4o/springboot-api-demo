@@ -24,4 +24,3 @@ grant_type:password
 ```
 
 
-$2a$10$LmYw7/Lro2ft8ey/OOhK3.y6kRSZe55hpF2zWqKuStyH2laC7K3Fa
