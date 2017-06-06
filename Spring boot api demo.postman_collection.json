@@ -1,0 +1,93 @@
+{
+	"id": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+	"name": "Spring boot api demo",
+	"description": "",
+	"order": [
+		"378d0901-fed0-b12d-8269-1c8587a3dbc0",
+		"abd6c54a-eac6-5780-850e-a20eabca1fbc",
+		"ad0270ce-416d-37c8-3bff-73e011eb59c7"
+	],
+	"folders": [],
+	"timestamp": 1495895057542,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "378d0901-fed0-b12d-8269-1c8587a3dbc0",
+			"headers": "Authorization: Basic bW9iaWxlOg==\n",
+			"url": "http://hunter:8080/api/oauth/token",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+			"data": [
+				{
+					"key": "username",
+					"value": "Frank",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "frank",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "获取token",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495895068604,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "abd6c54a-eac6-5780-850e-a20eabca1fbc",
+			"headers": "Authorization: Bearer 9b075219-a4be-41b4-9545-774cc44c8f2a\n",
+			"url": "http://hunter:8080/api/authdemo/hello",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1496385129903,
+			"name": "/api/authdemo/hello",
+			"description": "",
+			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+			"responses": []
+		},
+		{
+			"id": "ad0270ce-416d-37c8-3bff-73e011eb59c7",
+			"headers": "",
+			"url": "http://hunter:8080/api/noauth/hello",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+			"data": null,
+			"dataMode": "params",
+			"name": "/api/noauth/hello",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495895093214,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
