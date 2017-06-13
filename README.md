@@ -31,4 +31,6 @@ password:frank
 grant_type:password
 ```
 
+## 升级时遇到的问题
 
+https://stackoverflow.com/questions/42822875/springboot-1-5-x-security-oauth2
