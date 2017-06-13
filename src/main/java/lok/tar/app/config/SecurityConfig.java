@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .anyRequest().authenticated()
-                .and().csrf().disable();
+                .and()
+                .csrf().disable()
+        ;
         // @formatter:on
     }
 
@@ -50,9 +52,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    //@Override
-    //@Bean
-    //protected AuthenticationManager authenticationManager() throws Exception {
-    //    return super.authenticationManager();
-    //}
 }

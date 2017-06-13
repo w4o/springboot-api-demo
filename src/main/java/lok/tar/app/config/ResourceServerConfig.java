@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * Created by Frank on 2017/5/27.
@@ -13,17 +12,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-    public static final String RESOURCE_ID = "app";
+//    public static final String RESOURCE_ID = "app";
 
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId(RESOURCE_ID);
-    }
+//    @Override
+//    public void configure(ResourceServerSecurityConfigurer resources) {
+//        resources.resourceId(RESOURCE_ID);
+//    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // @formatter:off
-        //http.authorizeRequests().anyRequest().permitAll();
         http
                 .authorizeRequests()
                 .antMatchers("/noauth/**").permitAll()
@@ -36,8 +34,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/v2/api-docs").permitAll()
 
                 .anyRequest().authenticated()
-                .and().httpBasic()
-                .and().csrf().disable();
+                .and()
+                .csrf().disable()
+        ;
         // @formatter:on
     }
 }
