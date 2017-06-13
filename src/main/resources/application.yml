@@ -21,3 +21,6 @@ server:
 logging:
   level:
     org.springframework.security: INFO
+
+security.oauth2.clientId: mobile
+security.oauth2.secret:

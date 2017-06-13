@@ -3,6 +3,7 @@ package lok.tar.app.config;
 import lok.tar.app.service.security.MySQLUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -28,15 +29,20 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private MySQLUserDetailsService userDetailsService;
 
+    @Value("${security.oauth2.clientId}")
+    private String clientId;
+    @Value("${security.oauth2.secret}")
+    private String secret;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // @formatter:off
         clients
                 .inMemory()
 
-                .withClient("mobile")
+                .withClient(clientId)
                 .authorizedGrantTypes("password", "refresh_token")
-                //.secret("secret")
+                .secret(secret)
                 .scopes("ui")
         ;
         // @formatter:on
