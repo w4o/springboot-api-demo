@@ -1,9 +1,15 @@
 package lok.tar.app.domain;
 
+import lok.tar.app.commons.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -11,26 +17,20 @@ import java.util.List;
  */
 @Entity
 @Table(name = "`user`")
-public class User implements UserDetails {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "username")
+    @Setter
     private String username;
 
     @Column(name = "password")
+    @Setter
     private String password;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Role> roles;
 
     @Override
     public String getPassword() {
@@ -43,16 +43,12 @@ public class User implements UserDetails {
     }
 
     @Override
-    public List<GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> auths = new ArrayList<>();
+        for (Role role : this.roles) {
+            auths.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return auths;
     }
 
     @Override

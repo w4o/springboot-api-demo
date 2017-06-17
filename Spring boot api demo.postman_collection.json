@@ -4,14 +4,44 @@
 	"description": "",
 	"order": [
 		"378d0901-fed0-b12d-8269-1c8587a3dbc0",
+		"ad0270ce-416d-37c8-3bff-73e011eb59c7",
 		"abd6c54a-eac6-5780-850e-a20eabca1fbc",
-		"ad0270ce-416d-37c8-3bff-73e011eb59c7"
+		"9be04118-45e6-1157-d4b9-43219d3d7d13",
+		"270c6044-f6c9-a89f-e0c6-a01f154b5bd7"
 	],
 	"folders": [],
 	"timestamp": 1495895057542,
 	"owner": 0,
 	"public": false,
 	"requests": [
+		{
+			"id": "270c6044-f6c9-a89f-e0c6-a01f154b5bd7",
+			"headers": "Authorization: Bearer 0d9e26f6-6d36-40c0-ae3d-3f418d26e7db\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 0d9e26f6-6d36-40c0-ae3d-3f418d26e7db",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/authdemo/admin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497694457469,
+			"name": "/api/authdemo/admin",
+			"description": "",
+			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+			"responses": []
+		},
 		{
 			"id": "378d0901-fed0-b12d-8269-1c8587a3dbc0",
 			"headers": "Authorization: Basic bW9iaWxlOg==\n",
@@ -52,18 +82,56 @@
 			"helperAttributes": {}
 		},
 		{
-			"id": "abd6c54a-eac6-5780-850e-a20eabca1fbc",
-			"headers": "Authorization: Bearer 9b075219-a4be-41b4-9545-774cc44c8f2a\n",
-			"url": "http://hunter:8080/api/authdemo/hello",
+			"id": "9be04118-45e6-1157-d4b9-43219d3d7d13",
+			"headers": "Authorization: Bearer 0d9e26f6-6d36-40c0-ae3d-3f418d26e7db\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 0d9e26f6-6d36-40c0-ae3d-3f418d26e7db",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/authdemo/user",
+			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
+			"pathVariableData": [],
 			"method": "GET",
 			"data": null,
 			"dataMode": "params",
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1496385129903,
+			"time": 1497694459185,
+			"name": "/api/authdemo/user",
+			"description": "",
+			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
+			"responses": []
+		},
+		{
+			"id": "abd6c54a-eac6-5780-850e-a20eabca1fbc",
+			"headers": "Authorization: Bearer 13b649359-4bf7-4e0f-855f-96445302408d\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 13b649359-4bf7-4e0f-855f-96445302408d",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://hunter:8080/api/authdemo/hello",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1497333080244,
 			"name": "/api/authdemo/hello",
 			"description": "",
 			"collectionId": "c04f9cae-586e-3bc1-e005-8625c731d45f",
