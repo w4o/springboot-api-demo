@@ -30,7 +30,7 @@ public class User extends BaseEntity implements UserDetails {
     @Getter
     @Setter
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Role> roles;
+    private List<UserRole> userRoles;
 
     @Override
     public String getPassword() {
@@ -45,8 +45,8 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> auths = new ArrayList<>();
-        for (Role role : this.roles) {
-            auths.add(new SimpleGrantedAuthority(role.getName()));
+        for (UserRole userRole : this.userRoles) {
+            auths.add(new SimpleGrantedAuthority(userRole.getRole().getName()));
         }
         return auths;
     }
