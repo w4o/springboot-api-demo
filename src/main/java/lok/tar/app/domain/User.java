@@ -13,7 +13,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by Frank on 2017/5/27.
+ * @author frank
+ * @date 2017/5/27.
  */
 @Entity
 @Table(name = "`user`")

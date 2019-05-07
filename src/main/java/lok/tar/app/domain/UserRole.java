@@ -2,13 +2,16 @@ package lok.tar.app.domain;
 
 import lok.tar.app.commons.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
 /**
- * Created by Frank on 2017/6/19.
+ * @author frank
+ * @date 2017/5/27.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "user_role")
 public class UserRole extends BaseEntity {

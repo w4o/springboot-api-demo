@@ -9,10 +9,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Frank on 2017/5/5.
+ * @author frank
+ * @date 2017/5/27.
  */
 @Service
-public class MySQLUserDetailsService implements UserDetailsService {
+public class MysqlUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -28,6 +29,5 @@ public class MySQLUserDetailsService implements UserDetailsService {
 
         return user;
     }
-
 
 }

@@ -6,15 +6,17 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 /**
- * Created by Frank on 2017/5/27.
+ * @author frank
+ * @date 2017/5/27.
  */
-public interface UserRepository extends CrudRepository <User, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     /**
      * 根据用户名查找用户
+     *
      * @param userName
      * @return
      */
     @Query("select u from User  u where username=:username")
-    User getUserByUsername(@Param(value="username") String userName);
+    User getUserByUsername(@Param(value = "username") String userName);
 }

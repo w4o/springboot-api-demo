@@ -1,20 +1,20 @@
 package lok.tar.app.commons;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by Frank on 2017/6/17.
+ * @author frank
+ * @date 2017/5/27.
  */
 @MappedSuperclass
-public abstract class BaseEntity {
+@Data
+public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @Getter
-    @Setter
     private Integer id;
 }

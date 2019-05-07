@@ -1,47 +1,40 @@
 package lok.tar.app.config;
 
-import lok.tar.app.service.security.MySQLUserDetailsService;
+import lok.tar.app.service.security.MysqlUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * Created by Frank on 2017/5/27.
+ * @author frank
+ * @date 2019/5/7.
  */
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private MysqlUserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    private MySQLUserDetailsService userDetailsService;
+    public WebSecurityConfig(MysqlUserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
-        http
-                .authorizeRequests()
+        http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .csrf().disable()
-        ;
-        // @formatter:on
+                .csrf().disable();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService)
+        auth.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 

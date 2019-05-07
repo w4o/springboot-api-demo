@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
- * Created by Frank on 2017/5/27.
+ * @author frank
+ * @date 2017/5/27.
  */
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     //@RequestMapping(value = "/current", method = RequestMethod.GET)
     //public Principal getUser(Principal principal) {
